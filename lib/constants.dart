@@ -16,6 +16,12 @@ const playistText = 'PLAYLIST';
 const create = 'Create Playist';
 const like = 'Liked Songs';
 
+const number = '#';
+const title = 'TITLE';
+const album = 'ALBUM';
+const date = 'DATE ADDED';
+const duration = Icons.schedule;
+
 // Test image
 const kurtCobain =
     'https://www.rollingstone.com/wp-content/uploads/2019/03/GettyImages-98673775W.jpg?resize=1800,1200&w=1200';

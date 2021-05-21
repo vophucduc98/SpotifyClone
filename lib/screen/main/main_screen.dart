@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_clone/constants.dart';
@@ -76,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                                     Arrow Play
                                   */
                                   AnimatedOpacity(
-                                    duration: Duration(milliseconds: 200),
+                                    duration: Duration(milliseconds: 400),
                                     opacity: opacityBar,
                                     child: Container(
                                         width: 45,
@@ -99,7 +97,7 @@ class _MainScreenState extends State<MainScreen> {
                                   ),
                                   AnimatedOpacity(
                                     opacity: opacityBar,
-                                    duration: Duration(milliseconds: 200),
+                                    duration: Duration(milliseconds: 400),
                                     child: Text(
                                       'Electronic/Rock',
                                       style: TextStyle(
@@ -156,129 +154,229 @@ class _MainScreenState extends State<MainScreen> {
                         pinned: true,
                         snap: true,
                         elevation: 0.0,
-                        backgroundColor: textColorAlt.withOpacity(opacityBar),
+                        backgroundColor: primaryColor.withOpacity(opacityBar),
                       ),
                       SliverToBoxAdapter(
                         child: Container(
                           width: size.width,
-                          height: size.height * 0.3,
+                          height: size.height * 0.4,
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [textColorAlt, primaryColor])),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 30,
-                              ),
-                              Container(
-                                width: 200,
-                                height: 200,
-                                child: Image.network(
-                                  kurtCobain,
-                                  fit: BoxFit.cover,
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        value: loadingProgress
-                                                    .expectedTotalBytes !=
-                                                null
-                                            ? loadingProgress
-                                                    .cumulativeBytesLoaded /
-                                                loadingProgress
-                                                    .expectedTotalBytes
-                                            : null,
-                                      ),
-                                    );
-                                  },
-                                ),
-                                decoration: BoxDecoration(boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 30,
-                                      color: Colors.black,
-                                      offset: Offset(0, 10))
-                                ]),
-                              ),
-                              SizedBox(width: 30),
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 200,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: Column(
+                                children: [
+                                  Row(
                                     children: [
-                                      Text(
-                                        'PLAYLIST',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: textColorSelected),
-                                      ),
-                                      Text(
-                                        'Electronic/Rock',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: textColorSelected,
-                                            fontSize: 50),
-                                      ),
                                       SizedBox(
-                                        height: 10,
+                                        width: 30,
                                       ),
-                                      Text(
-                                        'RIP AND TEAR !!!',
-                                        style: TextStyle(color: textColor),
+                                      Container(
+                                        width: 200,
+                                        height: 200,
+                                        child: Image.network(
+                                          kurtCobain,
+                                          fit: BoxFit.cover,
+                                          loadingBuilder: (context, child,
+                                              loadingProgress) {
+                                            if (loadingProgress == null)
+                                              return child;
+                                            return Center(
+                                              child: CircularProgressIndicator(
+                                                value: loadingProgress
+                                                            .expectedTotalBytes !=
+                                                        null
+                                                    ? loadingProgress
+                                                            .cumulativeBytesLoaded /
+                                                        loadingProgress
+                                                            .expectedTotalBytes
+                                                    : null,
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                        decoration: BoxDecoration(boxShadow: [
+                                          BoxShadow(
+                                              blurRadius: 30,
+                                              color: Colors.black,
+                                              offset: Offset(0, 10))
+                                        ]),
                                       ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            child: SvgPicture.asset(
-                                              'assets/icons/avatar.svg',
-                                              height: 16,
-                                              width: 16,
-                                            ),
+                                      SizedBox(width: 30),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                          height: 200,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                'PLAYLIST',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: textColorSelected),
+                                              ),
+                                              Text(
+                                                'Electronic/Rock',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: textColorSelected,
+                                                    fontSize: 50),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Text(
+                                                'RIP AND TEAR !!!',
+                                                style:
+                                                    TextStyle(color: textColor),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  SizedBox(
+                                                    child: SvgPicture.asset(
+                                                      'assets/icons/avatar.svg',
+                                                      height: 16,
+                                                      width: 16,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    'Võ Phúc Đức',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color:
+                                                            textColorSelected,
+                                                        fontSize: 12),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Icon(
+                                                    Icons.fiber_manual_record,
+                                                    color: textColor,
+                                                    size: 8,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    '21 songs, 1 hr 32 min',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: textColor,
+                                                        fontSize: 12),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
                                           ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            'Võ Phúc Đức',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: textColorSelected,
-                                                fontSize: 12),
-                                          ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Icon(
-                                            Icons.fiber_manual_record,
-                                            color: textColor,
-                                            size: 8,
-                                          ),
-                                          SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            '21 songs, 1 hr 32 min',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: textColor,
-                                                fontSize: 12),
-                                          ),
-                                        ],
+                                        ),
                                       )
                                     ],
                                   ),
-                                ),
-                              )
-                            ],
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  Container(
+                                    width: size.width,
+                                    height: size.height * 0.15,
+                                    color: primaryColor.withOpacity(0.5),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30.0),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                              width: 55,
+                                              height: 55,
+                                              decoration: BoxDecoration(
+                                                  color: accentColor,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(35))),
+                                              child: IconButton(
+                                                icon: Icon(
+                                                  Icons.play_arrow,
+                                                  size: 35,
+                                                ),
+                                                color: textColorSelected,
+                                                onPressed: () {},
+                                              )),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          IconButton(
+                                            icon: Icon(
+                                              Icons.download,
+                                              size: 25,
+                                            ),
+                                            color: textColor,
+                                            onPressed: () {},
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: Icon(
+                                                Icons.more_horiz,
+                                                size: 25,
+                                              ),
+                                              color: textColor),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                      Icons.search,
+                                                      size: 20,
+                                                    ),
+                                                    color: textColor),
+                                                SizedBox(width: 20),
+                                                Text(
+                                                  'Custom order',
+                                                  style: TextStyle(
+                                                      color: textColor,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                      Icons.arrow_drop_down,
+                                                      size: 25,
+                                                      color: textColor,
+                                                    ))
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -286,14 +384,66 @@ class _MainScreenState extends State<MainScreen> {
                         delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int index) {
                             return Container(
-                              color:
-                                  // index.isOdd ? Colors.white : Colors.black12,
-                                  primaryColor,
-                              height: 50.0,
-                              child: Center(
-                                child: Text('$index', textScaleFactor: 2),
-                              ),
-                            );
+                                color: primaryColor,
+                                height: 50.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 30.0),
+                                  child: Row(
+                                      children: index == 0
+                                          ? ([
+                                              Text(number),
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Expanded(
+                                                  child: Text(title), flex: 2),
+                                              Expanded(
+                                                  child: Text(album), flex: 2),
+                                              Expanded(
+                                                  child: Text(date), flex: 2),
+                                              Expanded(
+                                                  child: Icon(
+                                                    duration,
+                                                    color: textColor,
+                                                  ),
+                                                  flex: 1),
+                                              Divider(
+                                                color: Colors.red,
+                                                thickness: 2,
+                                                height: 2,
+                                              )
+                                            ])
+                                          : ([
+                                              Text(index.toString()),
+                                              SizedBox(
+                                                width: 20,
+                                              ),
+                                              Expanded(
+                                                  child: Row(
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.all(8),
+                                                        child: Image(
+                                                            image: AssetImage(
+                                                                'assets/images/icons8-heart.png')),
+                                                      ),
+                                                      Text("Lorem ipsum"),
+                                                    ],
+                                                  ),
+                                                  flex: 2),
+                                              Expanded(
+                                                  child: Text("dolor sit amet"),
+                                                  flex: 2),
+                                              Expanded(
+                                                  child: Text("May 16, 2021"),
+                                                  flex: 2),
+                                              Expanded(
+                                                  child: Center(
+                                                      child: Text("4:20")))
+                                            ])),
+                                ));
                           },
                           childCount: 20,
                         ),
@@ -303,7 +453,7 @@ class _MainScreenState extends State<MainScreen> {
                   onNotification: (notificationInfo) {
                     if (notificationInfo is ScrollStartNotification) {
                       if (notificationInfo.metrics.pixels >
-                          (size.height * 0.3)) {
+                          (size.height * 0.40)) {
                         setState(() {
                           opacityBar = 1.0;
                         });

@@ -1,6 +1,6 @@
 # spotify_clone
 
-A new Flutter project.
+A Spotify UI clone using Flutter.
 
 ## Getting Started
 

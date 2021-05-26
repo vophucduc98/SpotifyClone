@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spotify_clone/bloc/playlist_bloc.dart';
 import 'package:spotify_clone/constants.dart';
+import 'package:spotify_clone/event/playlist_event.dart';
+import 'package:spotify_clone/screen/main/component/playlist_song.dart';
 
 class MainMenu extends StatefulWidget {
   @override
@@ -10,9 +14,18 @@ class MainMenu extends StatefulWidget {
 class _MainMenuState extends State<MainMenu> {
   ScrollController scrollController = ScrollController();
   double opacityBar = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<PlaylistBloc>(context)
+        .add(LoadEvent(playlistId: '/7fjgLUIE1E2JzCDbHCmnAh'));
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return Container(
       height: size.height * 0.9,
       width: size.width * 0.8,
@@ -360,65 +373,7 @@ class _MainMenuState extends State<MainMenu> {
                 ),
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return Container(
-                      color: primaryColor,
-                      height: 50.0,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                        child: Row(
-                            children: index == 0
-                                ? ([
-                                    Text(number),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Expanded(child: Text(title), flex: 2),
-                                    Expanded(child: Text(album), flex: 2),
-                                    Expanded(child: Text(date), flex: 2),
-                                    Expanded(
-                                        child: Icon(
-                                          duration,
-                                          color: textColor,
-                                        ),
-                                        flex: 1),
-                                    Divider(
-                                      color: Colors.red,
-                                      thickness: 2,
-                                      height: 2,
-                                    )
-                                  ])
-                                : ([
-                                    Text(index.toString()),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Expanded(
-                                        child: Row(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.all(8),
-                                              child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/icons8-heart.png')),
-                                            ),
-                                            Text("Lorem ipsum"),
-                                          ],
-                                        ),
-                                        flex: 2),
-                                    Expanded(
-                                        child: Text("dolor sit amet"), flex: 2),
-                                    Expanded(
-                                        child: Text("May 16, 2021"), flex: 2),
-                                    Expanded(child: Center(child: Text("4:20")))
-                                  ])),
-                      ));
-                },
-                childCount: 20,
-              ),
-            ),
+            PlaylistSong()
           ],
         ),
         onNotification: (notificationInfo) {

@@ -25,3 +25,7 @@ const duration = Icons.schedule;
 // Test image
 const kurtCobain =
     'https://www.rollingstone.com/wp-content/uploads/2019/03/GettyImages-98673775W.jpg?resize=1800,1200&w=1200';
+
+// Spotify API Auth
+const clientId = 'a8d530bdc87a4368b6e8146119245be5';
+const clientSecret = '667cff9f6be64eeeaa832d6e5e35dfe9';

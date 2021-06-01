@@ -9,7 +9,7 @@ class PlaylistFetchingState extends PlaylistState {}
 
 class PlaylistFetchedState extends PlaylistState {
   final Playlist playlist;
-  PlaylistFetchedState({@required this.playlist});
+  PlaylistFetchedState({this.playlist}) : assert(playlist != null);
 }
 
 class PlaylistEmptyState extends PlaylistState {}

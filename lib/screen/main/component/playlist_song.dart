@@ -21,8 +21,8 @@ class PlaylistSong extends StatelessWidget {
           } else if (state is PlaylistFetchingState) {
             return buildSliverList(null);
           } else {
-            final stateAsPlayerFetchedState = state;
-            final playlist = stateAsPlayerFetchedState.playlist;
+            final stateAsPlaylistFetchedState = state;
+            final playlist = stateAsPlaylistFetchedState.playlist;
             return buildSliverList(playlist);
           }
         });
